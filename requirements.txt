@@ -1,0 +1,12 @@
+pandas
+numpy
+scikit-learn
+lightgbm
+prophet
+matplotlib
+seaborn
+statsmodels
+fastapi
+joblib
+pydantic
+evidently
