@@ -1,31 +1,38 @@
-```markdown
 # Forecast Diário - Produto Alfa (Simulação)
 
 ## Resumo do Projeto
-Este repositório apresenta uma **estrutura técnica e operacional para previsão diária de vendas do Produto Alfa para os próximos 14 dias**, em formato de simulação.  
+
+Este repositório apresenta uma **estrutura técnica e operacional para previsão diária de vendas do Produto Alfa para os próximos 14 dias**, em formato de simulação.
 **Observação:** **não há dados reais**, e o foco é apenas demonstrar a arquitetura, pipeline, EDA, scripts e monitoramento que poderiam ser aplicados em produção.
 
 O projeto cobre:
 
-- Exploração e limpeza de dados (EDA)
-- Engenharia de features
-- Estratégia de modelos (baseline -> produção)
-- Pipeline de treinamento reprodutível
-- Arquitetura em nuvem (batch + online)
-- Monitoramento de performance e drift
-- Estrutura mínima de CI com testes placeholders
-- Dockerfile e dependências
+* Exploração e limpeza de dados (EDA)
+* Engenharia de features
+* Estratégia de modelos (baseline → produção)
+* Pipeline de treinamento reprodutível
+* Arquitetura em nuvem (batch + online)
+* Monitoramento de performance e drift
+* Estrutura mínima de CI com testes placeholders
+* Dockerfile e dependências
+
+
+## Diagrama da Pipeline
+
+Um **arquivo SVG** (`pipeline.svg`) está incluído no repositório, representando visualmente a **pipeline completa do projeto**, desde a ingestão e processamento de dados até a previsão e monitoramento.
+Você pode abrir o arquivo para entender como os módulos se conectam.
+
 
 ## Objetivos
 
-- Prever unidades vendidas do Produto Alfa para os próximos 14 dias.  
-- Produzir forecasts confiáveis e interpretáveis para decisões de estoque/compra.  
-- Demonstrar **estrutura viável de pipeline de ML na nuvem**.
-
+* Prever unidades vendidas do Produto Alfa para os próximos 14 dias.
+* Produzir forecasts confiáveis e interpretáveis para decisões de estoque/compra.
+* Demonstrar **estrutura viável de pipeline de ML na nuvem**.
 
 
 ## Estrutura de Pastas
-``
+
+```
 repo/
 ├── data/
 │   ├── raw/               # CSVs brutos (vazios/simulados)
@@ -42,69 +49,76 @@ repo/
 │   │   └── preprocess.sh  # Script de pré-processamento placeholder
 │   └── ci/
 │       └── test_placeholders.py  # Teste unitário dummy
+├── pipeline.svg           # Diagrama da pipeline
 ├── Dockerfile/
 ├── requirements.txt
 ├── README.md
+```
 
-``
+---
 
-## Instruções de Uso
+## **Instruções de Uso**
 
-1. **Instalação das dependências**
+### 1. Instalação das dependências
+
 ```bash
 pip install -r requirements.txt
-````
+```
 
-2. **Rodar testes placeholder**
+### 2. Rodar testes placeholder
 
 ```bash
 python -m unittest discover ci
 ```
 
-3. **Rodar notebook de EDA simulado**
+### 3. Executar notebook de EDA simulado
 
 * Abrir `notebooks/eda_placeholder.ipynb`
-* Executar células para visualizar gráficos simulados (series temporais, STL, boxplots, autocorrelação)
+* Executar células para visualizar gráficos simulados:
 
-4. **Executar scripts de preprocessamento**
+  * Séries temporais
+  * Rolling mean (STL)
+  * Boxplots
+  * Autocorrelação
+
+### 4. Executar scripts de pré-processamento
 
 ```bash
 bash scripts/preprocess.sh
 ```
 
-*(gera arquivos dummy em `data/processed/`)*
+* Gera arquivos dummy em `data/processed/`
 
-5. **Treinar modelo simulado**
+### 5. Treinar modelo simulado
 
 ```bash
 python src/models/train.py
 ```
 
-*(gera modelo placeholder em `src/models/model.txt`)*
+* Gera modelo placeholder em `src/models/model.txt`
 
-6. **Fazer previsões simuladas**
+### 6. Fazer previsões simuladas
 
 ```bash
 python src/models/predict.py
 ```
 
-*(gera forecast dummy CSV em `data/processed/forecast_YYYYMMDD_14dias.csv`)*
+* Gera forecast dummy CSV em `data/processed/forecast_YYYYMMDD_14dias.csv`
 
-## Arquitetura de Pipeline (Mermaid)
-
-> Tudo simulado: não há dados reais, apenas placeholders para mostrar arquitetura.
 
 ## Notas Importantes
 
 * **Simulação:** Nenhum modelo real é treinado. Todas as saídas são dummy para fins de apresentação.
-* **Validação:** A estrutura suporta time series split, métricas (MAE, RMSE, MAPE) e monitoramento de drift, mas com dados simulados.
+* **Validação:** A estrutura suporta *time series split*, métricas (MAE, RMSE, MAPE) e monitoramento de drift, mas com dados simulados.
 * **Extensibilidade:** Pode ser conectado a dados reais no futuro sem alterar a arquitetura.
+
 
 ## Considerações Finais
 
 Se desejar avançar para implementação real, é possível:
 
-* Adicionar dados históricos reais em `data/raw/`
-* Ajustar notebooks de EDA para análise real
-* Configurar hyperparameter tuning (Optuna, SageMaker, Vertex AI)
-* Deploy em nuvem com CI/CD completo
+1. Adicionar dados históricos reais em `data/raw/`
+2. Ajustar notebooks de EDA para análise real
+3. Configurar *hyperparameter tuning* (Optuna, SageMaker, Vertex AI)
+4. Deploy em nuvem com CI/CD completo
+
